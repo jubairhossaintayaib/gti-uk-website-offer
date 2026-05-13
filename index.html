@@ -465,6 +465,145 @@
 
 
 
+
+  /* ── Portfolio Section ── */
+  .portfolio-section {
+    background: #0B0B12;
+    padding: 80px 40px 90px;
+  }
+  .portfolio-inner {
+    max-width: var(--container);
+    margin: 0 auto;
+  }
+  .portfolio-header {
+    text-align: center;
+    margin-bottom: 52px;
+  }
+  .portfolio-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--blue); color: #fff;
+    font-size: 13px; font-weight: 800; letter-spacing: 0.1em;
+    text-transform: uppercase; padding: 10px 22px;
+    border-radius: 999px; margin-bottom: 24px;
+  }
+  .portfolio-headline {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 900; font-size: 38px; line-height: 1.1;
+    color: #fff; letter-spacing: -0.02em; margin: 0 0 14px;
+  }
+  .portfolio-sub {
+    font-size: 17px; color: #B7B7C9; max-width: 600px;
+    margin: 0 auto; line-height: 1.6;
+  }
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .portfolio-card {
+    border-radius: 12px;
+    overflow: hidden;
+    background: #15151F;
+    border: 1px solid rgba(255,255,255,0.08);
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    position: relative;
+  }
+  .portfolio-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
+  .portfolio-thumb {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    object-position: top;
+    display: block;
+    transition: opacity 0.2s ease;
+  }
+  .portfolio-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    border-radius: 12px;
+  }
+  .portfolio-card:hover .portfolio-overlay { opacity: 1; }
+  .portfolio-overlay-text {
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    text-align: center;
+    pointer-events: none;
+  }
+
+  /* Lightbox */
+  .portfolio-lightbox {
+    display: none;
+    position: fixed; inset: 0; z-index: 9999;
+    background: rgba(0,0,0,0.88);
+    align-items: flex-start;
+    justify-content: center;
+    padding: 40px 20px;
+    overflow-y: auto;
+  }
+  .portfolio-lightbox.open { display: flex; }
+  .portfolio-lightbox-inner {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 40px 80px rgba(0,0,0,0.6);
+    margin: auto;
+  }
+  .portfolio-lightbox-scroll {
+    width: 100%;
+    max-height: 85vh;
+    overflow-y: auto;
+    display: block;
+  }
+  .portfolio-lightbox-scroll img {
+    width: 100%;
+    display: block;
+  }
+  .portfolio-lightbox-close {
+    position: fixed;
+    top: 16px; right: 20px;
+    width: 40px; height: 40px;
+    background: #fff; border: none; border-radius: 50%;
+    font-size: 20px; font-weight: 700; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    z-index: 10000; box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    color: #1A1A26;
+  }
+  .portfolio-lightbox-nav {
+    position: fixed;
+    top: 50%; transform: translateY(-50%);
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.25);
+    color: #fff; width: 44px; height: 44px;
+    border-radius: 50%; font-size: 20px;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; z-index: 10000;
+    transition: background 0.15s;
+  }
+  .portfolio-lightbox-nav:hover { background: rgba(255,255,255,0.3); }
+  .portfolio-lightbox-nav.prev { left: 16px; }
+  .portfolio-lightbox-nav.next { right: 16px; }
+
+  @media (max-width: 900px) {
+    .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+    .portfolio-headline { font-size: 30px; }
+  }
+  @media (max-width: 560px) {
+    .portfolio-grid { grid-template-columns: 1fr; }
+    .portfolio-section { padding: 60px 20px 70px; }
+  }
+
   /* ── What's Included Section ── */
   .included-section {
     background: #ffffff;
@@ -1191,6 +1330,101 @@
 
   </div>
 </section>
+<!-- ════════════════ PORTFOLIO SECTION ════════════════ -->
+<section class="portfolio-section">
+  <div class="portfolio-inner">
+
+    <div class="portfolio-header">
+      <div class="portfolio-eyebrow">&#10022; OUR WORK</div>
+      <h2 class="portfolio-headline">Real Websites We've Built<br>For UK Businesses</h2>
+      <p class="portfolio-sub">Every site below was built FREE for a UK service business owner. Click any preview to scroll through the full design.</p>
+    </div>
+
+    <div class="portfolio-grid" id="portfolioGrid"></div>
+
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div class="portfolio-lightbox" id="portfolioLightbox">
+  <button class="portfolio-lightbox-close" onclick="closeLightbox()">&#x2715;</button>
+  <button class="portfolio-lightbox-nav prev" onclick="navLightbox(-1)">&#8249;</button>
+  <button class="portfolio-lightbox-nav next" onclick="navLightbox(1)">&#8250;</button>
+  <div class="portfolio-lightbox-inner">
+    <div class="portfolio-lightbox-scroll">
+      <img id="lightboxImg" src="" alt="" />
+    </div>
+  </div>
+</div>
+
+<script>
+  const portfolioItems = [
+    { label: "Health & Wellness Brand", img: "https://assets.cdn.filesafe.space/3ZtNQfSiRkNJGZVZxFV6/media/6a05057921edbf4eefdb2c36.png" },
+    { label: "Legal Services Firm", img: "https://assets.cdn.filesafe.space/3ZtNQfSiRkNJGZVZxFV6/media/6a05057960b8c350d3eaeee9.png" },
+    { label: "Home Renovation Co.", img: "https://assets.cdn.filesafe.space/3ZtNQfSiRkNJGZVZxFV6/media/6a05057921edbf4eefdb2c36.png" },
+    { label: "Real Estate Agency", img: "https://assets.cdn.filesafe.space/3ZtNQfSiRkNJGZVZxFV6/media/6a05057960b8c350d3eaeee9.png" },
+    { label: "Landscaping Business", img: "https://assets.cdn.filesafe.space/3ZtNQfSiRkNJGZVZxFV6/media/6a05057921edbf4eefdb2c36.png" },
+    { label: "Baking & Food Brand", img: "https://assets.cdn.filesafe.space/3ZtNQfSiRkNJGZVZxFV6/media/6a05057960b8c350d3eaeee9.png" },
+    { label: "Import & Trade Co.", img: "https://assets.cdn.filesafe.space/3ZtNQfSiRkNJGZVZxFV6/media/6a05057921edbf4eefdb2c36.png" },
+    { label: "Artisan Painting Studio", img: "https://assets.cdn.filesafe.space/3ZtNQfSiRkNJGZVZxFV6/media/6a05057960b8c350d3eaeee9.png" },
+    { label: "Plumbing Services", img: "https://assets.cdn.filesafe.space/3ZtNQfSiRkNJGZVZxFV6/media/6a05057921edbf4eefdb2c36.png" },
+    { label: "Aesthetics Clinic", img: "https://assets.cdn.filesafe.space/3ZtNQfSiRkNJGZVZxFV6/media/6a05057960b8c350d3eaeee9.png" },
+    { label: "Electrical Contractor", img: "https://assets.cdn.filesafe.space/3ZtNQfSiRkNJGZVZxFV6/media/6a05057921edbf4eefdb2c36.png" },
+    { label: "Personal Finance Coach", img: "https://assets.cdn.filesafe.space/3ZtNQfSiRkNJGZVZxFV6/media/6a05057960b8c350d3eaeee9.png" },
+  ];
+
+  let currentLightboxIndex = 0;
+
+  function buildPortfolioGrid() {
+    const grid = document.getElementById("portfolioGrid");
+    portfolioItems.forEach(function(item, i) {
+      const card = document.createElement("div");
+      card.className = "portfolio-card";
+      card.onclick = function() { openLightbox(i); };
+      card.innerHTML =
+        "<img class=\"portfolio-thumb\" src=\"" + item.img + "\" alt=\"Website design sample\" />" +
+        "<div class=\"portfolio-overlay\">" +
+          "<span class=\"portfolio-overlay-text\">Click To Enlarge</span>" +
+        "</div>";
+      grid.appendChild(card);
+    });
+  }
+
+  function openLightbox(index) {
+    currentLightboxIndex = index;
+    document.getElementById("lightboxImg").src = portfolioItems[index].img;
+    var lb = document.getElementById("portfolioLightbox");
+    lb.classList.add("open");
+    lb.querySelector(".portfolio-lightbox-scroll").scrollTop = 0;
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeLightbox() {
+    document.getElementById("portfolioLightbox").classList.remove("open");
+    document.body.style.overflow = "";
+  }
+
+  function navLightbox(dir) {
+    currentLightboxIndex = (currentLightboxIndex + dir + portfolioItems.length) % portfolioItems.length;
+    document.getElementById("lightboxImg").src = portfolioItems[currentLightboxIndex].img;
+    document.getElementById("portfolioLightbox").querySelector(".portfolio-lightbox-scroll").scrollTop = 0;
+  }
+
+  document.getElementById("portfolioLightbox").addEventListener("click", function(e) {
+    if (e.target === this) closeLightbox();
+  });
+
+  document.addEventListener("keydown", function(e) {
+    var lb = document.getElementById("portfolioLightbox");
+    if (!lb.classList.contains("open")) return;
+    if (e.key === "Escape") closeLightbox();
+    if (e.key === "ArrowRight") navLightbox(1);
+    if (e.key === "ArrowLeft") navLightbox(-1);
+  });
+
+  buildPortfolioGrid();
+</script>
+
 <section class="included-section">
   <div class="included-inner">
 
