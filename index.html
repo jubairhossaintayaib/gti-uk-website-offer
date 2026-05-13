@@ -374,11 +374,189 @@
   }
   .moneyback-text .bottom { color: var(--green); font-size: 12px; letter-spacing: 2px; }
 
-  /* ── Bottom CTA ── */
-  .bottom-cta-wrap {
-    max-width: 1080px; margin: 0 auto; padding: 0 40px 80px;
+  /* ── Reviews Section ── */
+  .reviews-section {
+    background: #f7f7f9;
+    padding: 80px 40px 90px;
   }
-  .cta-primary.bottom { padding: 26px 24px; }
+  .reviews-inner {
+    max-width: var(--container);
+    margin: 0 auto;
+  }
+  .reviews-header {
+    text-align: center;
+    margin-bottom: 52px;
+  }
+  .reviews-eyebrow-pill {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--blue); color: #fff;
+    font-size: 13px; font-weight: 800; letter-spacing: 0.1em;
+    text-transform: uppercase; padding: 10px 22px;
+    border-radius: 999px; margin-bottom: 24px;
+  }
+  .reviews-eyebrow-pill .pill-star { color: var(--star); font-size: 16px; }
+  .reviews-headline {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 900; font-size: 38px; line-height: 1.1;
+    color: #0B0B12; letter-spacing: -0.02em; margin: 0;
+  }
+  .reviews-grid {
+    columns: 4;
+    column-gap: 16px;
+  }
+  .review-card {
+    background: #fff;
+    border: 1px solid #E4E4EE;
+    border-radius: 12px;
+    padding: 18px 18px 16px;
+    break-inside: avoid;
+    margin-bottom: 16px;
+    display: inline-block;
+    width: 100%;
+  }
+  .review-card-top {
+    display: flex; align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+  }
+  .review-profile {
+    display: flex; align-items: center; gap: 10px;
+  }
+  .review-avatar {
+    width: 40px; height: 40px; border-radius: 50%;
+    flex-shrink: 0; display: flex; align-items: center;
+    justify-content: center; font-size: 15px; font-weight: 800;
+    color: #fff;
+  }
+  .review-name {
+    font-size: 14px; font-weight: 700; color: #1A1A26;
+  }
+  .review-star-icon { color: var(--green); font-size: 18px; line-height: 1; }
+  .review-stars {
+    color: var(--star); font-size: 20px; letter-spacing: 1px;
+    margin-bottom: 10px; line-height: 1;
+  }
+  .review-title {
+    font-size: 14px; font-weight: 800; color: #1A1A26;
+    line-height: 1.35; margin: 0 0 8px;
+  }
+  .review-text {
+    font-size: 13.5px; color: #3B3B52; line-height: 1.6; margin: 0 0 12px;
+  }
+  .review-text .highlight {
+    background: #FFF3B0; padding: 1px 0;
+  }
+  .review-date {
+    font-size: 12px; color: #9999AA; margin: 0;
+  }
+
+  @media (max-width: 1100px) {
+    .reviews-grid { columns: 3; }
+    .reviews-headline { font-size: 36px; }
+  }
+  @media (max-width: 720px) {
+    .reviews-grid { columns: 2; }
+    .reviews-section { padding: 60px 20px 70px; }
+    .reviews-headline { font-size: 28px; }
+  }
+  @media (max-width: 480px) {
+    .reviews-grid { columns: 1; }
+  }
+
+
+
+  /* ── What's Included Section ── */
+  .included-section {
+    background: #ffffff;
+    padding: 70px 40px;
+    border-top: 1px solid #E8E8EE;
+  }
+  .included-inner {
+    max-width: 740px;
+    margin: 0 auto;
+    background: #fff;
+    border: 1px solid #E0E0EE;
+    border-radius: 16px;
+    padding: 48px 52px 52px;
+  }
+  .included-headline {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 900; font-size: 28px; line-height: 1.2;
+    color: #0B0B12; margin: 0 0 20px;
+    text-transform: uppercase; letter-spacing: -0.01em;
+    text-align: center;
+  }
+  .included-bold {
+    font-size: 15px; font-weight: 700; color: #0B0B12;
+    line-height: 1.6; margin: 0 0 16px;
+  }
+  .included-p {
+    font-size: 15px; color: #3B3B52; line-height: 1.7; margin: 0 0 14px;
+  }
+  .included-highlight {
+    display: block;
+    background: #FFF176; padding: 6px 10px;
+    font-weight: 700; font-size: 15px; color: #0B0B12;
+    margin: 14px 0; border-radius: 3px;
+  }
+  .included-italic {
+    font-style: italic; font-size: 15px; color: #3B3B52;
+    margin: 0 0 16px; display: block;
+  }
+  .included-checklist {
+    list-style: none; padding: 0; margin: 0 0 20px; display: flex; flex-direction: column; gap: 12px;
+  }
+  .included-checklist li {
+    display: flex; align-items: flex-start; gap: 10px;
+    font-size: 15px; color: #2B2B3A; line-height: 1.5;
+  }
+  .included-checklist li::before {
+    content: '✅'; font-size: 16px; flex-shrink: 0; margin-top: 1px;
+  }
+  .included-divider {
+    border: none; border-top: 1px solid #E8E8EE; margin: 24px 0;
+  }
+  @media (max-width: 700px) {
+    .included-inner { padding: 32px 24px; }
+    .included-section { padding: 50px 20px; }
+    .included-headline { font-size: 22px; }
+  }
+
+  /* ── Bottom CTA Section ── */
+  .bottom-cta-section {
+    background: #ffffff;
+    padding: 60px 40px 70px;
+    border-top: 1px solid #E8E8EE;
+  }
+  .bottom-cta-inner {
+    max-width: 740px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+  }
+  .bottom-cta-section .cta-primary {
+    width: 100%;
+    max-width: 580px;
+  }
+  .bottom-trust-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+  .bottom-trust-row img {
+    height: 70px;
+    width: auto;
+    object-fit: contain;
+  }
+  @media (max-width: 600px) {
+    .bottom-cta-section { padding: 40px 20px 50px; }
+    .bottom-trust-row { gap: 24px; }
+    .bottom-trust-row img { height: 54px; }
+  }
 
   /* ── Responsive ── */
   @media (max-width: 900px) {
@@ -599,13 +777,481 @@
   </div>
 </main>
 
-<!-- ════════════════ BOTTOM CTA ════════════════ -->
-<div class="bottom-cta-wrap">
-  <button class="cta-primary bottom" type="button">
-    <span class="cta-main">YES I WANT MY FREE WEBSITE <span>→</span></span>
-    <span class="cta-sub">Delivered In 7 Days, 7 Day Refund Guarantee</span>
-  </button>
-</div>
+<!-- ════════════════ TESTIMONIALS SECTION ════════════════ -->
+<section class="reviews-section">
+  <div class="reviews-inner">
+
+    <div class="reviews-header">
+      <div class="reviews-eyebrow-pill"><span class="pill-star">⭐</span> EXCELLENT BASED ON 100'S OF REVIEWS</div>
+      <h2 class="reviews-headline">PROOF OUR WEBSITES CONVERT</h2>
+    </div>
+
+    <div class="reviews-grid">
+
+      <div class="review-card">
+        <div class="review-card-top">
+          <div class="review-profile">
+            <div class="review-avatar" style="background:#2D3CFF;">JW</div>
+            <span class="review-name">James W.</span>
+          </div>
+          <span class="review-star-icon">★</span>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-title">More leads at a fraction of the cost</p>
+        <p class="review-text"><span class="highlight">Fast delivery and a stunning result.</span> The site brought in more enquiries in the first week than our old one did in a month. The £25/mo hosting is a no-brainer. I always worried about the cost of maintaining a website but this has removed that stress entirely. Highly recommend.</p>
+        <p class="review-date">Apr 2, 2026</p>
+      </div>
+
+      <div class="review-card">
+        <div class="review-card-top">
+          <div class="review-profile">
+            <div class="review-avatar" style="background:#1a8a5a;">ST</div>
+            <span class="review-name">Sarah T.</span>
+          </div>
+          <span class="review-star-icon">★</span>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-title">Zero to professional in 6 days</p>
+        <p class="review-text"><span class="highlight">Absolutely blown away.</span> We went from zero web presence to a fully professional site in under a week.</p>
+        <p class="review-date">Mar 28, 2026</p>
+      </div>
+
+      <div class="review-card">
+        <div class="review-card-top">
+          <div class="review-profile">
+            <div class="review-avatar" style="background:#8a5ab0;">MR</div>
+            <span class="review-name">Mike R.</span>
+          </div>
+          <span class="review-star-icon">★</span>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-title">Too good to be true — but it was</p>
+        <p class="review-text">I was sceptical at first. <span class="highlight">A free website sounded impossible.</span> But they delivered exactly what was promised. Clean design, fast load times, and generating enquiries consistently every week. Worth every penny of the hosting fee and then some. Would recommend to any trade business owner without hesitation.</p>
+        <p class="review-date">Mar 25, 2026</p>
+      </div>
+
+      <div class="review-card">
+        <div class="review-card-top">
+          <div class="review-profile">
+            <div class="review-avatar" style="background:#c4720a;">EL</div>
+            <span class="review-name">Emma L.</span>
+          </div>
+          <span class="review-star-icon">★</span>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-title">Customers noticed straight away</p>
+        <p class="review-text">From first contact to launch in 6 days. <span class="highlight">The team took our brief and ran with it.</span> No fuss, no delays.</p>
+        <p class="review-date">Mar 22, 2026</p>
+      </div>
+
+      <div class="review-card">
+        <div class="review-card-top">
+          <div class="review-profile">
+            <div class="review-avatar" style="background:#2D3CFF;">DP</div>
+            <span class="review-name">David P.</span>
+          </div>
+          <span class="review-star-icon">★</span>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-title">Flawless from start to finish</p>
+        <p class="review-text"><span class="highlight">Flawless process, the team was excellent.</span> Communication was top notch, delivery on time, and the follow-up was professional. We've seen a 35% increase in inbound enquiries since launch.</p>
+        <p class="review-date">Mar 21, 2026</p>
+      </div>
+
+      <div class="review-card">
+        <div class="review-card-top">
+          <div class="review-profile">
+            <div class="review-avatar" style="background:#a02020;">RC</div>
+            <span class="review-name">Rachel C.</span>
+          </div>
+          <span class="review-star-icon">★</span>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-title">Game changer for our clinic</p>
+        <p class="review-text">Bookings are up 40% since launch. <span class="highlight">Complete game changer.</span></p>
+        <p class="review-date">Mar 19, 2026</p>
+      </div>
+
+      <div class="review-card">
+        <div class="review-card-top">
+          <div class="review-profile">
+            <div class="review-avatar" style="background:#0a7a6a;">TH</div>
+            <span class="review-name">Tom H.</span>
+          </div>
+          <span class="review-star-icon">★</span>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-title">Best decision we made this year</p>
+        <p class="review-text">As a small plumbing business we had no web presence at all. <span class="highlight">Within a week we had a beautiful site</span> and within a month we had 12 new customer enquiries directly from it. Unbelievable value for what you're paying.</p>
+        <p class="review-date">Mar 17, 2026</p>
+      </div>
+
+      <div class="review-card">
+        <div class="review-card-top">
+          <div class="review-profile">
+            <div class="review-avatar" style="background:#6a2D8a;">AN</div>
+            <span class="review-name">Anesu N.</span>
+          </div>
+          <span class="review-star-icon">★</span>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-title">Absolutely amazing</p>
+        <p class="review-text"><span class="highlight">Got my site within 7 days as promised.</span> Went through a few revisions and they were super accommodating. The team are genuinely great to work with — patient, creative, and they actually listen. My competitors have already asked who built it.</p>
+        <p class="review-date">Mar 15, 2026</p>
+      </div>
+
+      <div class="review-card">
+        <div class="review-card-top">
+          <div class="review-profile">
+            <div class="review-avatar" style="background:#2D3CFF;">LK</div>
+            <span class="review-name">Laura K.</span>
+          </div>
+          <span class="review-star-icon">★</span>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-title">Looks like it cost £5,000</p>
+        <p class="review-text"><span class="highlight">Our new site looks like it cost £5,000</span> — and we're only paying £25 a month. Enquiries through the contact form have tripled.</p>
+        <p class="review-date">Mar 12, 2026</p>
+      </div>
+
+      <div class="review-card">
+        <div class="review-card-top">
+          <div class="review-profile">
+            <div class="review-avatar" style="background:#b87a10;">BG</div>
+            <span class="review-name">Ben G.</span>
+          </div>
+          <span class="review-star-icon">★</span>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-title">Incredible ROI</p>
+        <p class="review-text">We were spending £500/mo on a web agency. Switched to Grow To Infinity and <span class="highlight">saved over £5,500 in the first year alone</span> while getting a better looking, faster site that actually converts. I tracked every enquiry for the first 3 months and the difference was dramatic. I wish I'd found them two years ago.</p>
+        <p class="review-date">Mar 10, 2026</p>
+      </div>
+
+      <div class="review-card">
+        <div class="review-card-top">
+          <div class="review-profile">
+            <div class="review-avatar" style="background:#1a6a3a;">PW</div>
+            <span class="review-name">Phil W.</span>
+          </div>
+          <span class="review-star-icon">★</span>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-title">Exceeded every expectation</p>
+        <p class="review-text"><span class="highlight">Genuinely exceeded every expectation.</span> The site is fast, clean and mobile-friendly.</p>
+        <p class="review-date">Mar 8, 2026</p>
+      </div>
+
+      <div class="review-card">
+        <div class="review-card-top">
+          <div class="review-profile">
+            <div class="review-avatar" style="background:#8a1a4a;">CJ</div>
+            <span class="review-name">Claire J.</span>
+          </div>
+          <span class="review-star-icon">★</span>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-title">Finally a website I'm proud of</p>
+        <p class="review-text">I've had three websites built over the years and none of them were right. <span class="highlight">This one is exactly what I wanted.</span> Clean, modern, converts well. The team listened and delivered something I'm genuinely proud to send customers to. So relieved I found them.</p>
+        <p class="review-date">Mar 5, 2026</p>
+      </div>
+
+      <div class="review-card">
+        <div class="review-card-top">
+          <div class="review-profile">
+            <div class="review-avatar" style="background:#2D3CFF;">NB</div>
+            <span class="review-name">Nadia B.</span>
+          </div>
+          <span class="review-star-icon">★</span>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-title">Brilliant from day one</p>
+        <p class="review-text"><span class="highlight">Brilliant experience from day one.</span> Our bounce rate dropped 60% compared to our old site.</p>
+        <p class="review-date">Mar 3, 2026</p>
+      </div>
+
+      <div class="review-card">
+        <div class="review-card-top">
+          <div class="review-profile">
+            <div class="review-avatar" style="background:#5a7a10;">GF</div>
+            <span class="review-name">Gary F.</span>
+          </div>
+          <span class="review-star-icon">★</span>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-title">Responsive and reliable</p>
+        <p class="review-text">Every question I had was answered within hours. <span class="highlight">The whole process was smooth and completely stress-free.</span> They handled everything — I just gave feedback and they nailed it every time. My landscaping business now looks the part and I'm winning bigger contracts because of it.</p>
+        <p class="review-date">Feb 28, 2026</p>
+      </div>
+
+      <div class="review-card">
+        <div class="review-card-top">
+          <div class="review-profile">
+            <div class="review-avatar" style="background:#a04a10;">HS</div>
+            <span class="review-name">Hannah S.</span>
+          </div>
+          <span class="review-star-icon">★</span>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-title">Worth every penny</p>
+        <p class="review-text"><span class="highlight">The free website offer is 100% real</span> and the quality is outstanding. My hair salon now looks as premium online as it does in person.</p>
+        <p class="review-date">Feb 25, 2026</p>
+      </div>
+
+      <div class="review-card">
+        <div class="review-card-top">
+          <div class="review-profile">
+            <div class="review-avatar" style="background:#2D3CFF;">OT</div>
+            <span class="review-name">Oliver T.</span>
+          </div>
+          <span class="review-star-icon">★</span>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-title">Transformed our online presence</p>
+        <p class="review-text">We had no website and relied entirely on word of mouth. <span class="highlight">Grow To Infinity completely transformed our online presence.</span> We now rank on Google and get 8–10 inbound leads a week — something that felt completely out of reach before.</p>
+        <p class="review-date">Feb 22, 2026</p>
+      </div>
+
+      <div class="review-card">
+        <div class="review-card-top">
+          <div class="review-profile">
+            <div class="review-avatar" style="background:#0a5a8a;">AM</div>
+            <span class="review-name">Aisha M.</span>
+          </div>
+          <span class="review-star-icon">★</span>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-title">Smooth, fast and impressive</p>
+        <p class="review-text"><span class="highlight">Clients say it's the most professional tutor site they've seen.</span> Couldn't ask for more.</p>
+        <p class="review-date">Feb 19, 2026</p>
+      </div>
+
+      <div class="review-card">
+        <div class="review-card-top">
+          <div class="review-profile">
+            <div class="review-avatar" style="background:#7a2a7a;">KC</div>
+            <span class="review-name">Kevin C.</span>
+          </div>
+          <span class="review-star-icon">★</span>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-title">Doubled our quote requests</p>
+        <p class="review-text">Before working with Grow To Infinity we averaged 3 quote requests a week. <span class="highlight">We now average 7–8.</span> The new design, clear CTAs, and fast load speed made all the difference. Absolutely delighted — and the team were a genuine pleasure to work with throughout the whole project.</p>
+        <p class="review-date">Feb 16, 2026</p>
+      </div>
+
+      <div class="review-card">
+        <div class="review-card-top">
+          <div class="review-profile">
+            <div class="review-avatar" style="background:#1a7a2a;">FR</div>
+            <span class="review-name">Fiona R.</span>
+          </div>
+          <span class="review-star-icon">★</span>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-title">Couldn't be happier</p>
+        <p class="review-text"><span class="highlight">The result is better than anything I could have imagined.</span> I was nervous handing over our brand but they nailed it.</p>
+        <p class="review-date">Feb 13, 2026</p>
+      </div>
+
+      <div class="review-card">
+        <div class="review-card-top">
+          <div class="review-profile">
+            <div class="review-avatar" style="background:#2D3CFF;">SN</div>
+            <span class="review-name">Steve N.</span>
+          </div>
+          <span class="review-star-icon">★</span>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-title">A proper professional website</p>
+        <p class="review-text">As an electrician I never thought I'd have a website this polished. <span class="highlight">It looks like a Fortune 500 company built it.</span> My competitors are literally asking who made it. Fast replies, great revisions, and they genuinely care about the result. I tell every tradesperson I meet about this service.</p>
+        <p class="review-date">Feb 10, 2026</p>
+      </div>
+
+      <div class="review-card">
+        <div class="review-card-top">
+          <div class="review-profile">
+            <div class="review-avatar" style="background:#8a4a1a;">VT</div>
+            <span class="review-name">Vincent T.</span>
+          </div>
+          <span class="review-star-icon">★</span>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-title">Brilliant value, brilliant team</p>
+        <p class="review-text"><span class="highlight">A free website that actually converts.</span> Our photography studio bookings went up 30% in 6 weeks.</p>
+        <p class="review-date">Feb 7, 2026</p>
+      </div>
+
+      <div class="review-card">
+        <div class="review-card-top">
+          <div class="review-profile">
+            <div class="review-avatar" style="background:#1a4a8a;">JP</div>
+            <span class="review-name">Jake P.</span>
+          </div>
+          <span class="review-star-icon">★</span>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-title">Exactly what we needed</p>
+        <p class="review-text">We needed something that worked on mobile, looked clean and generated calls. <span class="highlight">They nailed all three</span> without any fuss. Our cleaning company now looks bigger than competitors and we're winning more contracts because of it.</p>
+        <p class="review-date">Feb 4, 2026</p>
+      </div>
+
+      <div class="review-card">
+        <div class="review-card-top">
+          <div class="review-profile">
+            <div class="review-avatar" style="background:#6a1a6a;">ZA</div>
+            <span class="review-name">Zara A.</span>
+          </div>
+          <span class="review-star-icon">★</span>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-title">5 stars isn't enough</p>
+        <p class="review-text"><span class="highlight">If I could give 10 stars I would.</span> Clients mention how much they love the site before they've even booked with us.</p>
+        <p class="review-date">Feb 1, 2026</p>
+      </div>
+
+      <div class="review-card">
+        <div class="review-card-top">
+          <div class="review-profile">
+            <div class="review-avatar" style="background:#2D3CFF;">CM</div>
+            <span class="review-name">Chris M.</span>
+          </div>
+          <span class="review-star-icon">★</span>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-title">Our busiest month ever followed</p>
+        <p class="review-text">Month after launch was our busiest ever. <span class="highlight">The site is a sales machine.</span> Clear layout, strong CTAs, loads in under 2 seconds. Our old WordPress site was costing us customers — this fixed everything. I cannot overstate how big a difference it made to our pipeline.</p>
+        <p class="review-date">Jan 28, 2026</p>
+      </div>
+
+      <div class="review-card">
+        <div class="review-card-top">
+          <div class="review-profile">
+            <div class="review-avatar" style="background:#0a8a5a;">NP</div>
+            <span class="review-name">Natalie P.</span>
+          </div>
+          <span class="review-star-icon">★</span>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-title">Stress-free and stunning</p>
+        <p class="review-text"><span class="highlight">Completely stress-free.</span> They took care of everything and kept me updated. The final site is exactly my brand.</p>
+        <p class="review-date">Jan 24, 2026</p>
+      </div>
+
+      <div class="review-card">
+        <div class="review-card-top">
+          <div class="review-profile">
+            <div class="review-avatar" style="background:#8a2a2a;">RD</div>
+            <span class="review-name">Ryan D.</span>
+          </div>
+          <span class="review-star-icon">★</span>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-title">Converted on the first week</p>
+        <p class="review-text">Got a £2,400 roofing job from a lead that came through the website in week one. <span class="highlight">The site paid for itself 100 times over already.</span> For a trade business like mine that kind of ROI is unheard of. I'm recommending Grow To Infinity to every tradesperson I know.</p>
+        <p class="review-date">Jan 20, 2026</p>
+      </div>
+
+      <div class="review-card">
+        <div class="review-card-top">
+          <div class="review-profile">
+            <div class="review-avatar" style="background:#2D3CFF;">MW</div>
+            <span class="review-name">Marcus W.</span>
+          </div>
+          <span class="review-star-icon">★</span>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-title">Professional team, incredible output</p>
+        <p class="review-text"><span class="highlight">Our accountancy practice looks world class online now.</span> Quick turnaround and the full package exceeded expectations.</p>
+        <p class="review-date">Jan 16, 2026</p>
+      </div>
+
+      <div class="review-card">
+        <div class="review-card-top">
+          <div class="review-profile">
+            <div class="review-avatar" style="background:#4a8a1a;">IL</div>
+            <span class="review-name">Isla L.</span>
+          </div>
+          <span class="review-star-icon">★</span>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-title">I tell every business owner I know</p>
+        <p class="review-text">I have told every single business owner I know about Grow To Infinity. <span class="highlight">The offer is genuinely unbeatable</span> and the execution is flawless. Our dog grooming salon looks better online than most high street brands. The team even suggested layout improvements I hadn't thought of — brilliant attention to detail.</p>
+        <p class="review-date">Jan 12, 2026</p>
+      </div>
+
+    </div>
+
+    <div style="text-align:center; margin-top: 48px;">
+      <button class="cta-primary" type="button" style="max-width:580px; width:100%; display:inline-flex;">
+        <span class="cta-main">YES I WANT MY FREE WEBSITE <span>→</span></span>
+        <span class="cta-sub">Delivered In 7 Days, 7 Day Refund Guarantee</span>
+      </button>
+    </div>
+
+  </div>
+</section>
+<section class="included-section">
+  <div class="included-inner">
+
+    <h2 class="included-headline">What's Included In Our Free Website Build?</h2>
+
+    <p class="included-bold">A professional website is the fastest way to get a fully converting online presence, tailored to your UK service business — without lifting a finger.</p>
+
+    <p class="included-p">Because let's face it — you already know having a website works.</p>
+    <p class="included-p">You've seen competitors land clients online…</p>
+    <p class="included-p">You've heard about businesses doubling their enquiries…</p>
+    <p class="included-p">You've probably even thought about building one yourself…</p>
+    <p class="included-p">But the part nobody talks about?</p>
+
+    <span class="included-highlight">What the hell to actually put on it.</span>
+
+    <p class="included-p">What should be the headline… the services section… the proof… the call to action…</p>
+
+    <span class="included-highlight">But our proven website framework flips the script.</span>
+
+    <p class="included-p">We've eliminated months worth of guesswork, testing, and headaches…</p>
+
+    <span class="included-italic">Instead with our proven DFY framework you'll get:</span>
+
+    <ul class="included-checklist">
+      <li>The exact headline that stops your ideal customers from clicking away…</li>
+      <li>A services section that makes them feel understood and ready to enquire…</li>
+      <li>The perfect proof structure that builds unshakeable trust…</li>
+      <li>Objection handling that removes every excuse not to get in touch…</li>
+      <li>And a call-to-action so compelling they can't wait to contact you.</li>
+    </ul>
+
+    <hr class="included-divider">
+
+    <p class="included-p">We're not giving you another DIY template to figure out yourself…</p>
+    <p class="included-p">Or asking you to "figure it out" with a page builder…</p>
+    <p class="included-p">Because after building websites for over 300 UK service businesses, we realised something…</p>
+
+    <p class="included-bold">More information is rarely the answer.</p>
+
+    <p class="included-p">The top 1% of UK business owners value time over everything else…</p>
+    <p class="included-p">Which is why we personally handle everything you need to start converting website visitors into paying customers.</p>
+    <p class="included-p">And once your site goes live, getting clients online becomes easy — because all you have to do is follow our proven structure and BOOM!</p>
+    <p class="included-p">You'll be ready to launch and start converting traffic at industry-leading rates instead of the poor results most DIY sites get.</p>
+    <p class="included-p">Which means you don't have to keep losing customers to competitors with better-looking websites.</p>
+    <p class="included-p">Instead it'll be possible for you to convert visitors before they even think about going elsewhere.</p>
+
+    <p class="included-bold">Which is how you'll be able to scale profitably while your competitors struggle to keep up!</p>
+
+    <div style="display:flex; flex-direction:column; align-items:center; gap:24px; margin-top:32px;">
+      <button class="cta-primary" type="button" style="width:100%;">
+        <span class="cta-main">YES I WANT MY FREE WEBSITE <span>→</span></span>
+        <span class="cta-sub">Delivered In 7 Days, 7 Day Refund Guarantee</span>
+      </button>
+      <div class="bottom-trust-row">
+        <img src="https://assets.cdn.filesafe.space/3ZtNQfSiRkNJGZVZxFV6/media/6a04f01a21edbf4eefd7c435.png" alt="7 Day Money Back Guarantee" />
+        <img src="https://assets.cdn.filesafe.space/3ZtNQfSiRkNJGZVZxFV6/media/6a04f01a8c6475e185e670b5.png" alt="Trusted by 300+ Businesses" />
+      </div>
+    </div>
+
+  </div>
+</section>
 
 </body>
 </html>
