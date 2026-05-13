@@ -313,11 +313,12 @@
     display: flex; align-items: center; gap: 12px; position: relative;
   }
   .testimonial-avatar {
-    width: 36px; height: 36px; border-radius: 50%;
-    background: linear-gradient(135deg, #d4a8a8, #8a5a5a); flex-shrink: 0;
+    width: 40px; height: 40px; border-radius: 50%;
+    flex-shrink: 0; object-fit: cover;
+    background: linear-gradient(135deg, #d4a8a8, #8a5a5a);
   }
   .testimonial-name {
-    font-size: 14px; font-weight: 700;
+    font-size: 15px; font-weight: 700;
     display: inline-flex; align-items: center; gap: 6px;
   }
   .verified {
@@ -327,18 +328,30 @@
     color: #fff; font-size: 9px; font-weight: 900;
   }
   .testimonial-arrows {
-    margin-left: auto; display: flex; gap: 12px;
-    color: #fff; opacity: 0.85;
+    margin-left: auto; display: flex; gap: 8px;
+    color: #fff;
   }
-  .testimonial-arrows svg { cursor: pointer; }
-  .testimonial-body { padding: 12px 14px 14px; background: #fff; }
-  .testimonial-stars { color: var(--star); letter-spacing: 2px; font-size: 14px; margin-bottom: 8px; }
+  .testimonial-arrows button {
+    background: rgba(255,255,255,0.2); border: none; border-radius: 4px;
+    width: 28px; height: 28px; cursor: pointer; color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.15s;
+  }
+  .testimonial-arrows button:hover { background: rgba(255,255,255,0.35); }
+  .testimonial-body { padding: 14px 14px 14px; background: #fff; }
+  .testimonial-stars { color: var(--star); font-size: 20px; margin-bottom: 10px; letter-spacing: 2px; }
   .testimonial-quote {
-    font-size: 12.5px; line-height: 1.5; color: #2B2B3A;
-    background: #FFF7DC; padding: 6px 8px; margin: 0 0 8px;
-    border-radius: 3px;
+    font-size: 14px; line-height: 1.6; color: #2B2B3A;
+    background: none; padding: 0; margin: 0 0 10px;
+    height: 88px; overflow: hidden; transition: height 0.3s ease;
   }
-  .read-more { font-size: 12px; color: #6B6B7E; font-weight: 500; cursor: pointer; }
+  .testimonial-quote.expanded { height: auto; }
+  .read-toggle {
+    font-size: 13px; color: var(--blue); font-weight: 600;
+    cursor: pointer; background: none; border: none;
+    padding: 0; font-family: inherit;
+  }
+  .read-toggle:hover { text-decoration: underline; }
 
   /* Money-back */
   .moneyback {
@@ -500,27 +513,85 @@
 
       <div class="testimonial">
         <div class="testimonial-header">
-          <div class="testimonial-avatar"></div>
-          <span class="testimonial-name">
+          <div class="testimonial-avatar" id="testi-avatar"></div>
+          <span class="testimonial-name" id="testi-name">
             James W. <span class="verified">✓</span>
           </span>
           <div class="testimonial-arrows">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline>
-            </svg>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
+            <button onclick="changeTestimonial(-1)" aria-label="Previous">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            </button>
+            <button onclick="changeTestimonial(1)" aria-label="Next">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </button>
           </div>
         </div>
         <div class="testimonial-body">
           <div class="testimonial-stars">★★★★★</div>
-          <p class="testimonial-quote">
-            The Grow To Infinity team built our entire website in under a week and it's brought in more leads than our old site ever did. Super professional, fast turnaround, and the £25/mo hosting is a no-brainer for any UK business owner.
-          </p>
-          <div class="read-more">Read more</div>
+          <p class="testimonial-quote" id="testi-quote"></p>
+          <button class="read-toggle" id="read-toggle" onclick="toggleRead()">Read more</button>
         </div>
       </div>
+
+      <script>
+        const testimonials = [
+          {
+            name: "James W.",
+            avatar: "linear-gradient(135deg, #d4a8a8, #8a5a5a)",
+            text: "The Grow To Infinity team built our entire website in under a week and it's brought in more leads than our old site ever did. Super professional, fast turnaround, and the £25/mo hosting is a no-brainer for any UK business owner."
+          },
+          {
+            name: "Sarah T.",
+            avatar: "linear-gradient(135deg, #a8c4d4, #5a7a8a)",
+            text: "Absolutely blown away by the quality. We went from zero web presence to a fully professional site in days. The team were responsive, knew exactly what we needed, and the ongoing support for £25 a month is unbeatable value. Highly recommend to any UK business."
+          },
+          {
+            name: "Mike R.",
+            avatar: "linear-gradient(135deg, #b4d4a8, #6a8a5a)",
+            text: "I was sceptical at first — a free website sounded too good to be true. But Grow To Infinity delivered exactly what they promised. Clean design, fast load times, and it's already generating enquiries. Worth every penny of the hosting fee."
+          },
+          {
+            name: "Emma L.",
+            avatar: "linear-gradient(135deg, #d4b8f0, #8a5ab0)",
+            text: "From first contact to launch in 6 days. The team took our brief and ran with it — no fuss, no delays. The site looks incredible and our customers have noticed the difference immediately. Can't fault them."
+          }
+        ];
+
+        let current = 0;
+
+        function renderTestimonial() {
+          const t = testimonials[current];
+          const avatar = document.getElementById('testi-avatar');
+          const nameEl = document.getElementById('testi-name');
+          const quoteEl = document.getElementById('testi-quote');
+          const toggle = document.getElementById('read-toggle');
+
+          avatar.style.background = t.avatar;
+          nameEl.innerHTML = t.name + ' <span class="verified">✓</span>';
+          quoteEl.textContent = t.text;
+          quoteEl.classList.remove('expanded');
+
+          // Show read more only if text overflows fixed height
+          quoteEl.style.height = '88px';
+          toggle.style.display = quoteEl.scrollHeight > 90 ? 'inline' : 'none';
+          toggle.textContent = 'Read more';
+        }
+
+        function changeTestimonial(dir) {
+          current = (current + dir + testimonials.length) % testimonials.length;
+          renderTestimonial();
+        }
+
+        function toggleRead() {
+          const q = document.getElementById('testi-quote');
+          const btn = document.getElementById('read-toggle');
+          const expanded = q.classList.toggle('expanded');
+          q.style.height = expanded ? q.scrollHeight + 'px' : '88px';
+          btn.textContent = expanded ? 'Read less' : 'Read more';
+        }
+
+        renderTestimonial();
+      </script>
 
       <img src="https://assets.cdn.filesafe.space/3ZtNQfSiRkNJGZVZxFV6/media/6a04f01a21edbf4eefd7c435.png" alt="7 Day Money Back Guarantee" style="width:100%;" />
 
