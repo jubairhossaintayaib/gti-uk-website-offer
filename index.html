@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Grow To Infinity — Free Website Build</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* ── Tokens ── */
+  :root {
+    --blue:        #2D3CFF;
+    --blue-deep:   #1F2BD9;
+    --blue-soft:   #5663FF;
+    --bg-dark:     #0B0B12;
+    --bg-dark-2:   #15151F;
+    --bg-top:      #0E0E18;
+    --text:        #FFFFFF;
+    --text-muted:  #B7B7C9;
+    --text-dim:    #6B6B7E;
+    --green:       #3FD96A;
+    --red:         #E52B2B;
+    --star:        #F5B400;
+    --card-white:  #FFFFFF;
+    --card-border: #E8E8EE;
+    --radius-lg:   14px;
+    --radius-md:   10px;
+    --radius-sm:   6px;
+    --container:   1200px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    background: linear-gradient(180deg, var(--bg-top) 0%, #16161F 40%, #1C1C2E 100%);
+    color: var(--text);
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Promo bar ── */
+  .promo-bar {
+    background: var(--blue);
+    width: 100%;
+    padding: 18px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .brand { display: flex; flex-direction: column; align-items: center; line-height: 1; gap: 4px; }
+  .brand-eyebrow {
+    font-size: 10px; font-weight: 700; letter-spacing: 0.22em;
+    color: rgba(255,255,255,0.95); text-transform: uppercase;
+  }
+  .brand-main {
+    font-family: 'Plus Jakarta Sans', sans-serif; font-size: 24px;
+    font-weight: 900; letter-spacing: 0.04em; color: #fff;
+  }
+  .promo-right { font-size: 14px; color: #fff; display: flex; gap: 8px; align-items: center; }
+  .promo-right .label { font-weight: 700; }
+  .promo-right .email { opacity: 0.95; }
+
+  /* ── Hero wrapper ── */
+  .hero {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 64px 40px 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Trust row */
+  .trust-row {
+    display: flex; align-items: center; gap: 16px; margin-bottom: 36px;
+  }
+  .avatars { display: flex; align-items: center; }
+  .avatar {
+    width: 44px; height: 44px; border-radius: 50%;
+    border: 2px solid var(--bg-top);
+    margin-left: -10px; overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .avatar:first-child { margin-left: 0; }
+  .avatar.a1 { background: linear-gradient(135deg, #4a5a6b, #2a3a4b); }
+  .avatar.a2 { background: linear-gradient(135deg, #6b4a4a, #4a2a2a); }
+  .avatar.a3 { background: linear-gradient(135deg, #5a4a6b, #3a2a4b); }
+  .avatar.a4 { background: linear-gradient(135deg, #4a6b5a, #2a4b3a); }
+  .trust-text-wrap { display: flex; flex-direction: column; gap: 4px; }
+  .stars { color: var(--green); font-size: 16px; letter-spacing: 2px; line-height: 1; }
+  .trust-text {
+    font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px;
+    font-weight: 800; letter-spacing: 0.04em; color: #fff; line-height: 1.15;
+  }
+
+  /* Headline */
+  h1.headline {
+    font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 900;
+    font-size: 48px; line-height: 1.05;
+    text-align: center; margin: 0 0 28px;
+    letter-spacing: -0.02em; max-width: 980px;
+  }
+  h1.headline .muted { color: #6E6E85; }
+
+  .subhead {
+    text-align: center; font-size: 20px; line-height: 1.45;
+    color: #D6D6E0; max-width: 720px; margin: 0 0 36px;
+  }
+
+  .example-line {
+    color: var(--green); font-weight: 700; font-size: 20px;
+    text-align: center; margin: 0 0 32px; letter-spacing: 0.01em;
+  }
+
+  /* ── Two-column grid ── */
+  .columns {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 28px;
+    width: 100%;
+    max-width: 1080px;
+    align-items: start;
+  }
+
+  /* Left column */
+  .video-col { display: flex; flex-direction: column; gap: 20px; }
+
+  .video-card {
+    border-radius: var(--radius-lg); overflow: hidden;
+    background: #0F0F18;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.45);
+  }
+  .video-header {
+    background: var(--blue); color: #fff;
+    padding: 12px 16px; font-weight: 700; font-size: 15px;
+    letter-spacing: 0.04em;
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+  }
+
+  .video-placeholder {
+    aspect-ratio: 16 / 9;
+    background: repeating-linear-gradient(135deg,
+      #1A1A26 0px, #1A1A26 14px,
+      #20202E 14px, #20202E 28px);
+    position: relative;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .play-button {
+    width: 76px; height: 76px; border-radius: 50%;
+    background: rgba(255,255,255,0.95);
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+    cursor: pointer; transition: transform 0.15s ease;
+  }
+  .play-button:hover { transform: scale(1.06); }
+  .play-button svg { margin-left: 4px; }
+  .mute-toggle {
+    position: absolute; top: 16px; right: 16px;
+    width: 36px; height: 36px; border-radius: 50%;
+    background: rgba(0,0,0,0.6);
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; cursor: pointer;
+  }
+  .video-caption {
+    position: absolute; bottom: 14px; left: 50%; transform: translateX(-50%);
+    font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #8A8A9E;
+    background: rgba(11,11,18,0.7); padding: 6px 12px; border-radius: 4px;
+    letter-spacing: 0.04em; white-space: nowrap;
+  }
+
+  /* CTA button */
+  .cta-primary {
+    background: var(--blue); border: none;
+    border-radius: var(--radius-md); color: #fff;
+    width: 100%; padding: 22px 24px; cursor: pointer;
+    display: flex; flex-direction: column; align-items: center; gap: 4px;
+    transition: background 0.15s ease, transform 0.05s ease;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+  .cta-primary:hover { background: var(--blue-deep); }
+  .cta-primary:active { transform: translateY(1px); }
+  .cta-primary .cta-main {
+    font-family: 'Plus Jakarta Sans', sans-serif; font-size: 26px;
+    font-weight: 900; letter-spacing: 0.01em;
+    display: inline-flex; align-items: center; gap: 12px;
+  }
+  .cta-primary .cta-sub {
+    font-size: 12px; font-weight: 700; letter-spacing: 0.03em; opacity: 0.95;
+  }
+
+  .built-for {
+    text-align: center; font-size: 16px; font-weight: 700;
+    color: #fff; font-style: italic;
+    display: inline-flex; align-items: center; gap: 8px;
+    justify-content: center; margin: 4px auto 0;
+  }
+  .built-for .star { color: var(--star); font-size: 18px; }
+
+  /* ── Right pricing card ── */
+  .price-card {
+    background: var(--card-white); border-radius: var(--radius-lg);
+    padding: 24px 22px 26px; color: #1A1A26;
+    display: flex; flex-direction: column; gap: 18px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.35);
+    align-self: start;
+  }
+
+  /* Product mockup placeholder */
+  .product-stack {
+    aspect-ratio: 1 / 0.78; border-radius: var(--radius-md);
+    background: repeating-linear-gradient(45deg,
+      #E8E8F0 0px, #E8E8F0 10px, #DDDDE8 10px, #DDDDE8 20px);
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+  .product-stack-label {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #6B6B7E;
+    background: rgba(255,255,255,0.85); padding: 6px 10px;
+    border-radius: 4px; letter-spacing: 0.05em;
+  }
+  .product-stack-tag {
+    position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%);
+    background: var(--blue); color: #fff;
+    font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px; letter-spacing: 0.05em;
+    padding: 6px 14px; border-radius: 4px; white-space: nowrap;
+  }
+
+  /* Price line */
+  .price-line {
+    display: flex; align-items: baseline;
+    justify-content: center; gap: 12px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 900; letter-spacing: -0.01em;
+  }
+  .price-line .only  { color: var(--red); font-size: 40px; }
+  .price-line .original {
+    color: var(--red); font-size: 40px;
+    text-decoration: line-through; text-decoration-thickness: 2px;
+  }
+
+  .price-desc {
+    text-align: center; font-size: 15px; color: #2B2B3A;
+    line-height: 1.4; margin: -4px 0 0;
+  }
+
+  /* Form fields */
+  .form-field {
+    display: flex; align-items: center; gap: 10px;
+    border: 1px solid #D8D8E0; border-radius: var(--radius-sm);
+    padding: 14px; background: #fff;
+  }
+  .form-field svg { flex-shrink: 0; color: #1A1A26; }
+  .form-field input {
+    flex: 1; border: none; outline: none;
+    font-family: 'Plus Jakarta Sans', sans-serif; font-size: 15px;
+    font-weight: 600; color: #1A1A26; background: transparent;
+  }
+  .form-field input::placeholder { color: #8A8A9E; font-weight: 600; }
+
+  .get-started {
+    background: #4F5BE0; color: #fff; border: none;
+    border-radius: var(--radius-sm); padding: 18px;
+    font-family: 'Plus Jakarta Sans', sans-serif; font-size: 18px; font-weight: 800;
+    letter-spacing: 0.08em; cursor: pointer;
+    transition: background 0.15s ease; width: 100%;
+  }
+  .get-started:hover { background: #3F4BD0; }
+
+  /* Payment icons */
+  .payments {
+    display: flex; justify-content: center; align-items: center;
+    gap: 14px; padding: 4px 0 0;
+  }
+  .pay-pill {
+    background: #15388C; color: #fff;
+    font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 900;
+    font-size: 10px; letter-spacing: 0.06em;
+    padding: 6px 10px; border-radius: 3px;
+    display: inline-flex; align-items: center; justify-content: center;
+    min-width: 44px;
+  }
+  .pay-pill.mc {
+    background: #fff; color: transparent;
+    border: 1px solid #E8E8EE;
+    position: relative; padding: 0; width: 44px; height: 24px;
+  }
+  .pay-pill.mc::before,
+  .pay-pill.mc::after {
+    content: ''; position: absolute; top: 50%; transform: translateY(-50%);
+    width: 14px; height: 14px; border-radius: 50%;
+  }
+  .pay-pill.mc::before { background: #EB001B; left: 9px; }
+  .pay-pill.mc::after  { background: #F79E1B; right: 9px; mix-blend-mode: multiply; }
+  .pay-pill.apple {
+    background: #fff; color: #000;
+    border: 1px solid #E8E8EE; font-size: 16px; padding: 4px 12px;
+  }
+
+  /* Testimonial */
+  .testimonial {
+    border: 1px solid #E8E8EE; border-radius: var(--radius-md); overflow: hidden;
+  }
+  .testimonial-header {
+    background: var(--blue); color: #fff;
+    padding: 12px 14px;
+    display: flex; align-items: center; gap: 12px; position: relative;
+  }
+  .testimonial-avatar {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: linear-gradient(135deg, #d4a8a8, #8a5a5a); flex-shrink: 0;
+  }
+  .testimonial-name {
+    font-size: 14px; font-weight: 700;
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+  .verified {
+    display: inline-flex; width: 14px; height: 14px;
+    background: #3FD96A; border-radius: 50%;
+    align-items: center; justify-content: center;
+    color: #fff; font-size: 9px; font-weight: 900;
+  }
+  .testimonial-arrows {
+    margin-left: auto; display: flex; gap: 12px;
+    color: #fff; opacity: 0.85;
+  }
+  .testimonial-arrows svg { cursor: pointer; }
+  .testimonial-body { padding: 12px 14px 14px; background: #fff; }
+  .testimonial-stars { color: var(--star); letter-spacing: 2px; font-size: 14px; margin-bottom: 8px; }
+  .testimonial-quote {
+    font-size: 12.5px; line-height: 1.5; color: #2B2B3A;
+    background: #FFF7DC; padding: 6px 8px; margin: 0 0 8px;
+    border-radius: 3px;
+  }
+  .read-more { font-size: 12px; color: #6B6B7E; font-weight: 500; cursor: pointer; }
+
+  /* Money-back */
+  .moneyback {
+    display: flex; align-items: center; gap: 12px;
+    background: #F4F4F7; border-radius: var(--radius-sm); padding: 10px 12px;
+  }
+  .moneyback-badge {
+    width: 48px; height: 48px; border-radius: 50%;
+    background: #0E5A53; color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Plus Jakarta Sans', sans-serif; font-size: 10px;
+    letter-spacing: 0.04em; text-align: center; line-height: 1;
+    flex-shrink: 0; flex-direction: column; gap: 2px;
+  }
+  .moneyback-badge .num { font-size: 14px; }
+  .moneyback-text { display: flex; flex-direction: column; gap: 2px; }
+  .moneyback-text .top {
+    font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px;
+    color: #1A1A26; letter-spacing: 0.03em; line-height: 1.05;
+  }
+  .moneyback-text .bottom { color: var(--green); font-size: 12px; letter-spacing: 2px; }
+
+  /* ── Bottom CTA ── */
+  .bottom-cta-wrap {
+    max-width: 1080px; margin: 0 auto; padding: 0 40px 80px;
+  }
+  .cta-primary.bottom { padding: 26px 24px; }
+
+  /* ── Responsive ── */
+  @media (max-width: 900px) {
+    .columns { grid-template-columns: 1fr; max-width: 560px; }
+    h1.headline { font-size: 42px; }
+    .promo-bar { padding: 14px 20px; flex-wrap: wrap; gap: 8px; justify-content: center; }
+    .hero { padding: 40px 20px 60px; }
+    .bottom-cta-wrap { padding: 0 20px 60px; }
+  }
+  @media (max-width: 480px) {
+    h1.headline { font-size: 32px; }
+    .cta-primary .cta-main { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ════════════════ TOP PROMO BAR ════════════════ -->
+<header class="promo-bar">
+  <div class="brand">
+    <div class="brand-eyebrow">GROW&nbsp;TO&nbsp;INFINITY</div>
+    <div class="brand-main">FREE WEBSITE</div>
+  </div>
+  <div class="promo-right">
+    <span class="label">More questions?</span>
+    <span class="email">teamgrowtoinfinity@gmail.com</span>
+  </div>
+</header>
+
+<!-- ════════════════ HERO ════════════════ -->
+<main class="hero">
+
+  <!-- Trust badge image -->
+  <img src="https://assets.cdn.filesafe.space/3ZtNQfSiRkNJGZVZxFV6/media/6a04f01a8c6475e185e670b5.png" alt="Trusted by 300+ businesses" style="width:350px; margin-bottom:36px;" />
+
+  <!-- Headline -->
+  <h1 class="headline">
+    WE'LL BUILD YOU A HIGH CONVERTING WEBSITE IN UNDER 7 DAYS
+    <span class="muted">COMPLETELY FREE (YOU ONLY PAY £25/MO HOSTING)</span>
+  </h1>
+
+  <p class="subhead">
+    We'll design and build your new website using the same proven framework that's helped UK service businesses generate £10M+ in revenue for our clients.
+  </p>
+
+  <div class="example-line">
+    <span>↓</span> This is an example of what we'll build for you
+  </div>
+
+  <!-- ── Two-column grid ── -->
+  <div class="columns">
+
+    <!-- LEFT: Video + CTA -->
+    <div class="video-col">
+      <div class="video-card">
+        <div class="video-header">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+          </svg>
+          WATCH THIS DEMO
+        </div>
+        <div class="video-placeholder">
+          <div class="play-button">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="#1A1A26">
+              <polygon points="6 4 20 12 6 20 6 4"></polygon>
+            </svg>
+          </div>
+          <div class="mute-toggle">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+              <line x1="23" y1="9" x2="17" y2="15"></line>
+              <line x1="17" y1="9" x2="23" y2="15"></line>
+            </svg>
+          </div>
+          <div class="video-caption">[ DROP YOUR DEMO VIDEO HERE — 16:9 ]</div>
+        </div>
+      </div>
+
+      <button class="cta-primary" type="button">
+        <span class="cta-main">YES I WANT MY FREE WEBSITE <span>→</span></span>
+        <span class="cta-sub">Unlimited Revisions, 7&nbsp;Day Refund Guarantee</span>
+      </button>
+
+      <div class="built-for">
+        <span class="star">★</span>
+        <span><em>Built for 1,500+ UK service businesses</em></span>
+      </div>
+    </div>
+
+    <!-- RIGHT: Pricing / form card -->
+    <aside class="price-card">
+
+      <img src="https://assets.cdn.filesafe.space/3ZtNQfSiRkNJGZVZxFV6/media/6a04f01a82125b9874cfe050.webp" alt="Website mockup" style="width:100%; border-radius:var(--radius-md);" />
+
+      <div class="price-line">
+        <span class="only">FREE</span>
+        <span class="original">£2,500</span>
+      </div>
+
+      <p class="price-desc">
+        Get your done-for-you website risk free for £0, delivered in just 7 days.
+      </p>
+
+      <div class="form-field">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+          <circle cx="12" cy="7" r="4"></circle>
+        </svg>
+        <input type="text" placeholder="Full Name*" />
+      </div>
+
+      <div class="form-field">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+          <polyline points="22,6 12,13 2,6"></polyline>
+        </svg>
+        <input type="email" placeholder="Email*" />
+      </div>
+
+      <button class="get-started" type="button">GET STARTED</button>
+
+      <div class="payments">
+        <span class="pay-pill">VISA</span>
+        <span class="pay-pill" style="background:#fff;color:#15388C;border:1px solid #D0D0E0;">VISA</span>
+        <span class="pay-pill mc" aria-label="Mastercard"></span>
+        <span class="pay-pill apple"> Apple</span>
+      </div>
+
+      <div class="testimonial">
+        <div class="testimonial-header">
+          <div class="testimonial-avatar"></div>
+          <span class="testimonial-name">
+            James W. <span class="verified">✓</span>
+          </span>
+          <div class="testimonial-arrows">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </div>
+        </div>
+        <div class="testimonial-body">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-quote">
+            The Grow To Infinity team built our entire website in under a week and it's brought in more leads than our old site ever did. Super professional, fast turnaround, and the £25/mo hosting is a no-brainer for any UK business owner.
+          </p>
+          <div class="read-more">Read more</div>
+        </div>
+      </div>
+
+      <img src="https://assets.cdn.filesafe.space/3ZtNQfSiRkNJGZVZxFV6/media/6a04f01a21edbf4eefd7c435.png" alt="7 Day Money Back Guarantee" style="width:100%;" />
+
+    </aside>
+  </div>
+</main>
+
+<!-- ════════════════ BOTTOM CTA ════════════════ -->
+<div class="bottom-cta-wrap">
+  <button class="cta-primary bottom" type="button">
+    <span class="cta-main">YES I WANT MY FREE WEBSITE <span>→</span></span>
+    <span class="cta-sub">Delivered In 7 Days, 7 Day Refund Guarantee</span>
+  </button>
+</div>
+
+</body>
+</html>
