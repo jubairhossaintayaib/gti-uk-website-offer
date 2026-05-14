@@ -466,6 +466,248 @@
 
 
 
+
+
+  /* ── Guarantee Section ── */
+  .guarantee-section {
+    background: #0B0B12;
+    padding: 80px 40px 90px;
+    text-align: center;
+  }
+  .guarantee-inner {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .guarantee-badge-img {
+    width: 100px;
+    margin-bottom: 28px;
+  }
+  .guarantee-headline {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 900; font-size: 34px; line-height: 1.15;
+    color: #fff; text-transform: uppercase;
+    letter-spacing: -0.01em; margin: 0 0 24px;
+  }
+  .guarantee-lead {
+    font-size: 18px; font-weight: 700; color: #D6D6E0;
+    line-height: 1.6; margin: 0 0 28px;
+    font-style: italic;
+  }
+  .guarantee-body {
+    text-align: left;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-bottom: 36px;
+  }
+  .guarantee-body p {
+    font-size: 15px; color: #B7B7C9;
+    line-height: 1.75; margin: 0 0 12px;
+  }
+  .guarantee-body p:last-child { margin-bottom: 0; }
+  .guarantee-body .g-bold { font-weight: 700; color: #fff; }
+  .guarantee-trust-row {
+    display: flex; align-items: center;
+    justify-content: center; gap: 32px;
+    flex-wrap: wrap; margin-top: 28px;
+  }
+  .guarantee-trust-row img { height: 70px; width: auto; object-fit: contain; }
+
+  /* ── FAQ Section ── */
+  .faq-section {
+    background: #f7f7f9;
+    padding: 0 40px 0;
+  }
+  .faq-outer {
+    max-width: 740px;
+    margin: 0 auto;
+    background: #fff;
+    border: 1px solid #E0E0EE;
+    border-radius: 16px;
+    padding: 48px 48px 52px;
+    position: relative;
+    top: -40px;
+  }
+  .faq-headline {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 900; font-size: 32px; line-height: 1.15;
+    color: #0B0B12; text-transform: uppercase;
+    text-align: center; margin: 0 0 8px;
+    letter-spacing: -0.01em;
+  }
+  .faq-help {
+    text-align: center; font-size: 14px; color: #6B6B7E;
+    margin: 0 0 32px;
+  }
+  .faq-help a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  .faq-item {
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 8px;
+  }
+  .faq-question {
+    width: 100%; background: var(--blue); color: #fff;
+    border: none; padding: 16px 20px;
+    display: flex; align-items: center;
+    justify-content: space-between;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 15px; font-weight: 700;
+    cursor: pointer; text-align: left;
+    transition: background 0.15s;
+  }
+  .faq-question:hover { background: var(--blue-deep); }
+  .faq-chevron {
+    font-size: 18px; transition: transform 0.25s ease;
+    flex-shrink: 0; margin-left: 12px;
+  }
+  .faq-item.open .faq-chevron { transform: rotate(180deg); }
+  .faq-answer {
+    max-height: 0; overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    background: #fff;
+    font-size: 14px; color: #3B3B52; line-height: 1.7;
+    padding: 0 20px;
+  }
+  .faq-item.open .faq-answer {
+    max-height: 400px;
+    padding: 16px 20px;
+  }
+  .faq-cta-wrap {
+    margin-top: 32px;
+    display: flex; flex-direction: column;
+    align-items: center; gap: 24px;
+  }
+  .faq-cta-wrap .cta-primary { width: 100%; }
+  .faq-trust-row {
+    display: flex; align-items: center;
+    justify-content: center; gap: 32px; flex-wrap: wrap;
+  }
+  .faq-trust-row img { height: 60px; width: auto; object-fit: contain; }
+
+  /* ── Footer ── */
+  .site-footer {
+    background: #0B0B12;
+    padding: 48px 40px 40px;
+    text-align: center;
+  }
+  .footer-brand {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 900; font-size: 20px;
+    color: #fff; letter-spacing: 0.04em;
+    margin-bottom: 28px;
+  }
+  .footer-brand span { display: block; font-size: 10px; font-weight: 700; letter-spacing: 0.2em; opacity: 0.7; margin-bottom: 4px; }
+  .footer-legal p {
+    font-size: 12px; color: #6B6B7E;
+    line-height: 1.7; max-width: 660px;
+    margin: 0 auto 10px;
+  }
+
+  @media (max-width: 640px) {
+    .guarantee-section { padding: 60px 20px 70px; }
+    .guarantee-headline { font-size: 26px; }
+    .guarantee-body { padding: 20px 20px; }
+    .faq-section { padding: 0 20px 0; }
+    .faq-outer { padding: 32px 20px 36px; top: -24px; }
+    .faq-headline { font-size: 24px; }
+    .site-footer { padding: 40px 20px 32px; }
+  }
+
+  /* ── How It Works Section ── */
+  .steps-section {
+    background: #f7f7f9;
+    padding: 80px 40px 90px;
+  }
+  .steps-inner {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+  .steps-headline {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 900; font-size: 34px; line-height: 1.15;
+    color: #0B0B12; text-transform: uppercase;
+    letter-spacing: -0.01em; text-align: center;
+    margin: 0 0 52px;
+  }
+  .step-card {
+    background: #fff;
+    border: 1px solid #E0E0EE;
+    border-radius: 14px;
+    overflow: hidden;
+    margin-bottom: 28px;
+  }
+  .step-card-header {
+    background: var(--blue);
+    padding: 18px 24px 22px;
+    position: relative;
+  }
+  .step-pill {
+    display: inline-block;
+    background: #f59e0b;
+    color: #fff;
+    font-size: 13px; font-weight: 800;
+    letter-spacing: 0.04em;
+    padding: 6px 16px;
+    border-radius: 6px;
+    margin-bottom: 14px;
+    position: relative;
+    top: -8px;
+  }
+  .step-card-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800; font-size: 24px;
+    color: #fff; line-height: 1.2; margin: 0;
+  }
+  .step-card-body {
+    padding: 24px 28px 28px;
+    display: grid;
+    grid-template-columns: 1fr 180px;
+    gap: 24px;
+    align-items: center;
+  }
+  .step-card-body.no-img {
+    grid-template-columns: 1fr;
+  }
+  .step-card-text p {
+    font-size: 14.5px; color: #3B3B52;
+    line-height: 1.7; margin: 0 0 12px;
+  }
+  .step-card-text p:last-child { margin-bottom: 0; }
+  .step-card-text .highlight-link {
+    color: #f59e0b; font-weight: 700;
+    text-decoration: none;
+  }
+  .step-card-text .highlight-blue {
+    color: var(--blue); font-weight: 700;
+    text-decoration: none;
+  }
+  .step-card-text .highlight-block {
+    color: #f59e0b; font-weight: 700;
+    font-style: normal;
+  }
+  .step-icon-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 130px;
+  }
+  .step-icon-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  @media (max-width: 640px) {
+    .steps-section { padding: 60px 20px 70px; }
+    .steps-headline { font-size: 26px; }
+    .step-card-body { grid-template-columns: 1fr; }
+    .step-icon-wrap { height: 90px; font-size: 40px; }
+    .step-card-title { font-size: 20px; }
+  }
+
   /* ── Portfolio Section ── */
   .portfolio-section {
     background: #0B0B12;
@@ -1486,6 +1728,224 @@
 
   </div>
 </section>
+
+<!-- ════════════════ HOW IT WORKS ════════════════ -->
+<section class="steps-section">
+  <div class="steps-inner">
+
+    <h2 class="steps-headline">Here's Exactly How We'll<br>Build Your Free Website</h2>
+
+    <!-- Step 1 -->
+    <div class="step-card">
+      <div class="step-card-header">
+        <div class="step-pill">Step 1</div>
+        <h3 class="step-card-title">Sign up for your hosting<br>&amp; maintenance plan today</h3>
+      </div>
+      <div class="step-card-body">
+        <div class="step-card-text">
+          <p>Click the button below and sign up for your <span class="highlight-link">£25/month hosting &amp; maintenance plan</span> — that's your only cost. The website buildout itself is completely FREE.</p>
+          <p>No setup fees. No hidden charges. <span class="highlight-block">Zero pounds down for your new website.</span> You'll be up and running in seconds — and from there, we take care of everything.</p>
+          <p>Your hosting plan covers ongoing maintenance, security updates, and dedicated support so your site stays fast, secure, and live month after month.</p>
+        </div>
+        <div class="step-icon-wrap"><img src="https://assets.cdn.filesafe.space/3ZtNQfSiRkNJGZVZxFV6/media/6a0510198c6475e185eb745c.png" alt="Step visual" /></div>
+      </div>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="step-card">
+      <div class="step-card-header">
+        <div class="step-pill">Step 2</div>
+        <h3 class="step-card-title">Book your onboarding call<br>&amp; share your details</h3>
+      </div>
+      <div class="step-card-body">
+        <div class="step-card-text">
+          <p>After signing up, you'll be redirected straight to our <span class="highlight-blue">booking page</span> to schedule your onboarding call at a time that suits you.</p>
+          <p>On this call, one of our team will walk you through everything — <span class="highlight-link">your business, your goals, your brand, and exactly what you want your website to do for you.</span></p>
+          <p>We'll collect all the details we need so we can get straight to work. No back-and-forth emails, no confusion — just one focused call and we're off.</p>
+        </div>
+        <div class="step-icon-wrap"><img src="https://assets.cdn.filesafe.space/3ZtNQfSiRkNJGZVZxFV6/media/6a0510198c6475e185eb745c.png" alt="Step visual" /></div>
+      </div>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="step-card">
+      <div class="step-card-header">
+        <div class="step-pill">Step 3</div>
+        <h3 class="step-card-title">We build your website &amp;<br>you review it</h3>
+      </div>
+      <div class="step-card-body">
+        <div class="step-card-text">
+          <p>Our team gets straight to work building your fully custom website using our <span class="highlight-blue">proven high-converting framework</span> — designed specifically for UK service businesses.</p>
+          <p>Once your site is ready, we'll send it over for you to review. <span class="highlight-link">You can request as many revisions as you need</span> — we don't stop until you're completely happy with the result.</p>
+          <p><span class="highlight-block">We'll keep refining the design, the copy, and the layout until it's exactly right for your business and your customers.</span></p>
+        </div>
+        <div class="step-icon-wrap"><img src="https://assets.cdn.filesafe.space/3ZtNQfSiRkNJGZVZxFV6/media/6a0510198c6475e185eb745c.png" alt="Step visual" /></div>
+      </div>
+    </div>
+
+    <!-- Step 4 -->
+    <div class="step-card">
+      <div class="step-card-header">
+        <div class="step-pill">Step 4</div>
+        <h3 class="step-card-title">Launch your website within<br>7 days — ready to convert</h3>
+      </div>
+      <div class="step-card-body">
+        <div class="step-card-text">
+          <p>Within <span class="highlight-link">7 days from your onboarding call</span>, your brand new website will be live and ready to start bringing in customers.</p>
+          <p>No delays. No excuses. Just a <span class="highlight-blue">professional, fast, mobile-friendly website</span> built to convert visitors into enquiries and enquiries into paying clients.</p>
+          <p><span class="highlight-block">This is how you'll be able to compete with businesses spending thousands on their web presence — without spending a penny on the build itself.</span></p>
+        </div>
+        <div class="step-icon-wrap"><img src="https://assets.cdn.filesafe.space/3ZtNQfSiRkNJGZVZxFV6/media/6a0510198c6475e185eb745c.png" alt="Step visual" /></div>
+      </div>
+    </div>
+
+    <div style="display:flex; flex-direction:column; align-items:center; gap:28px; margin-top:40px;">
+      <button class="cta-primary" type="button" style="width:100%;">
+        <span class="cta-main">YES I WANT MY FREE WEBSITE <span>→</span></span>
+        <span class="cta-sub">Delivered In 7 Days, 7 Day Refund Guarantee</span>
+      </button>
+      <div class="bottom-trust-row">
+        <img src="https://assets.cdn.filesafe.space/3ZtNQfSiRkNJGZVZxFV6/media/6a04f01a21edbf4eefd7c435.png" alt="7 Day Money Back Guarantee" />
+        <img src="https://assets.cdn.filesafe.space/3ZtNQfSiRkNJGZVZxFV6/media/6a051097c56db4013f6b562a.png" alt="Trusted by 300+ Founders" />
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════ GUARANTEE SECTION ════════════════ -->
+<section class="guarantee-section">
+  <div class="guarantee-inner">
+
+    <img class="guarantee-badge-img" src="https://assets.cdn.filesafe.space/3ZtNQfSiRkNJGZVZxFV6/media/6a04f01a21edbf4eefd7c435.png" alt="7 Day Money Back Guarantee" />
+
+    <h2 class="guarantee-headline">Your Sign-Up Is Backed By Our<br>Satisfaction Money-Back Guarantee</h2>
+
+    <p class="guarantee-lead">I know that before getting into anything… I'd like to know what I'm buying and that it's backed by a solid money-back guarantee.</p>
+
+    <div class="guarantee-body">
+      <p>And I want you to be completely comfortable with this decision.</p>
+      <p>And even though it's only £25 — you worked for that money and it counts.</p>
+      <p>Look, I believe in trying before you buy — it's just smart business.</p>
+      <p>So here's what I've arranged:</p>
+      <p>Sign up today, let us build your website, and review it when we deliver it within 7 days.</p>
+      <p>And if you don't like the website for any reason and want to stop…</p>
+      <p>Just shoot us an email at <span class="g-bold">teamgrowtoinfinity@gmail.com</span> and request a refund within 7 days.</p>
+      <p><span class="g-bold">We'll refund your £25. No questions asked.</span></p>
+      <p>How's that for a money-back guarantee? I'd say pretty good!</p>
+    </div>
+
+    <button class="cta-primary" type="button" style="width:100%; max-width:580px;">
+      <span class="cta-main">YES I WANT MY FREE WEBSITE <span>→</span></span>
+      <span class="cta-sub">Delivered In 7 Days, 7 Day Refund Guarantee</span>
+    </button>
+
+    <div class="guarantee-trust-row">
+      <img src="https://assets.cdn.filesafe.space/3ZtNQfSiRkNJGZVZxFV6/media/6a051097c56db4013f6b562a.png" alt="Trusted by 300+ Founders" />
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════ FAQ SECTION ════════════════ -->
+<section class="faq-section">
+  <div class="faq-outer">
+
+    <h2 class="faq-headline">Frequently Asked<br>Questions</h2>
+    <p class="faq-help">Need help? Email us: <a href="mailto:teamgrowtoinfinity@gmail.com">teamgrowtoinfinity@gmail.com</a></p>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        I want this — what exactly am I getting?
+        <span class="faq-chevron">&#8964;</span>
+      </button>
+      <div class="faq-answer">You're getting a fully custom, professionally designed website built specifically for your UK service business — completely free. All you pay is £25 per month for hosting and maintenance. We design, build, and launch the entire site using our proven high-converting framework. You'll also get unlimited revisions until you're 100% happy.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        How long does this take?
+        <span class="faq-chevron">&#8964;</span>
+      </button>
+      <div class="faq-answer">From your onboarding call to a live website — 7 days. Once you sign up, you'll book your onboarding call where we collect all your details. From that call, we get straight to work and your site will be ready to review within 7 days.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        What's the investment?
+        <span class="faq-chevron">&#8964;</span>
+      </button>
+      <div class="faq-answer">The website build is completely FREE — £0 upfront. The only cost is £25 per month for your hosting and maintenance plan, which keeps your site live, secure, fast, and supported month after month. You can cancel anytime.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Who is this for?
+        <span class="faq-chevron">&#8964;</span>
+      </button>
+      <div class="faq-answer">This is built specifically for UK service business owners — tradespeople, consultants, clinics, coaches, freelancers, and local businesses — who want a professional online presence without paying thousands upfront. If you want a high-quality website that actually generates enquiries, this is for you.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Will this work for my industry?
+        <span class="faq-chevron">&#8964;</span>
+      </button>
+      <div class="faq-answer">Yes. We've built websites for plumbers, electricians, landscapers, aesthetics clinics, accountants, tutors, photographers, solicitors, cleaning companies, and many more. If you run a service-based business in the UK, our framework is built for you.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        How is this different from other website services?
+        <span class="faq-chevron">&#8964;</span>
+      </button>
+      <div class="faq-answer">Most agencies charge £1,500–£5,000 upfront just to build a site, and then leave you to figure out the hosting yourself. We build your site for FREE and handle everything — design, build, hosting, maintenance, and ongoing support — for just £25 a month. We've done this for 300+ UK businesses and our sites are built to convert, not just look pretty.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        What if I want changes after it's built?
+        <span class="faq-chevron">&#8964;</span>
+      </button>
+      <div class="faq-answer">You get unlimited revisions during the build process — we won't stop until you're completely happy with the result. After your site goes live, our £25/mo maintenance plan includes ongoing support for any updates or changes you need down the line.</div>
+    </div>
+
+    <div class="faq-cta-wrap">
+      <button class="cta-primary" type="button" style="width:100%;">
+        <span class="cta-main">YES I WANT MY FREE WEBSITE <span>→</span></span>
+        <span class="cta-sub">Delivered In 7 Days, 7 Day Refund Guarantee</span>
+      </button>
+      <div class="faq-trust-row">
+        <img src="https://assets.cdn.filesafe.space/3ZtNQfSiRkNJGZVZxFV6/media/6a04f01a21edbf4eefd7c435.png" alt="7 Day Money Back Guarantee" />
+        <img src="https://assets.cdn.filesafe.space/3ZtNQfSiRkNJGZVZxFV6/media/6a051097c56db4013f6b562a.png" alt="Trusted by 300+ Founders" />
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════ FOOTER ════════════════ -->
+<footer class="site-footer">
+  <div class="footer-brand">
+    <span>GROW TO INFINITY</span>
+    FREE WEBSITE
+  </div>
+  <div class="footer-legal">
+    <p>This website is not part of the Facebook website or Facebook Inc. Additionally, this site is NOT endorsed by Facebook in any way. FACEBOOK is a trademark of FACEBOOK, Inc.</p>
+    <p>The results shared on this page are not typical and your results will vary. These testimonials are not intended to represent or guarantee that everyone will achieve the same results. Individual results depend on your effort, commitment, and follow-through. Any business endeavour carries inherent risks and there are no guarantees of success.</p>
+    <p>We offer a 7-day money-back guarantee from the date of sign-up. If you're not satisfied with your website, contact us for a full refund within 7 days.</p>
+    <p>The testimonials and examples shown are real results from actual clients. However, these results are not typical and your results may vary. Past performance does not guarantee future results.</p>
+  </div>
+</footer>
+
+<script>
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(function(el) { el.classList.remove('open'); });
+    if (!isOpen) item.classList.add('open');
+  }
+</script>
 
 </body>
 </html>
