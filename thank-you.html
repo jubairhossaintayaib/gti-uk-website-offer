@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Thank You — Grow To Infinity</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: #0B0B12;
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 24px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .card {
+    background: #15151F;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 20px;
+    padding: 56px 48px;
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .check-circle {
+    width: 80px; height: 80px;
+    background: linear-gradient(135deg, #3FD96A, #1ab84f);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 28px;
+    box-shadow: 0 0 40px rgba(63,217,106,0.25);
+  }
+  .check-circle svg { width: 38px; height: 38px; }
+
+  h1 {
+    font-weight: 900; font-size: 34px; line-height: 1.15;
+    margin-bottom: 16px; letter-spacing: -0.02em;
+  }
+
+  .subtitle {
+    font-size: 18px; color: #B7B7C9; line-height: 1.6;
+    margin-bottom: 36px;
+  }
+
+  .steps-box {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 28px 32px;
+    text-align: left;
+    margin-bottom: 36px;
+  }
+  .steps-box h3 {
+    font-size: 14px; font-weight: 800; letter-spacing: 0.1em;
+    text-transform: uppercase; color: #5663FF;
+    margin-bottom: 20px;
+  }
+  .next-step {
+    display: flex; gap: 16px; align-items: flex-start;
+    margin-bottom: 18px;
+  }
+  .next-step:last-child { margin-bottom: 0; }
+  .step-num {
+    width: 32px; height: 32px; border-radius: 50%;
+    background: #2D3CFF; color: #fff;
+    font-size: 14px; font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; margin-top: 2px;
+  }
+  .step-content h4 { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+  .step-content p  { font-size: 14px; color: #B7B7C9; line-height: 1.5; }
+
+  .email-note {
+    font-size: 14px; color: #6B6B7E; margin-bottom: 32px; line-height: 1.6;
+  }
+  .email-note strong { color: #B7B7C9; }
+
+  .cta-btn {
+    display: inline-block;
+    background: #2D3CFF; color: #fff;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 18px; font-weight: 900;
+    letter-spacing: 0.02em;
+    padding: 20px 40px; border-radius: 10px;
+    text-decoration: none; border: none; cursor: pointer;
+    transition: background 0.15s;
+    width: 100%;
+  }
+  .cta-btn:hover { background: #1F2BD9; }
+
+  .brand {
+    margin-top: 40px; text-align: center;
+  }
+  .brand-eyebrow {
+    font-size: 10px; font-weight: 700; letter-spacing: 0.2em;
+    text-transform: uppercase; color: rgba(255,255,255,0.4);
+  }
+  .brand-main {
+    font-size: 18px; font-weight: 900; color: rgba(255,255,255,0.7);
+    letter-spacing: 0.04em;
+  }
+
+  @media (max-width: 520px) {
+    .card { padding: 36px 24px; }
+    h1 { font-size: 26px; }
+    .steps-box { padding: 20px; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="card">
+
+    <div class="check-circle">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="20 6 9 17 4 12"></polyline>
+      </svg>
+    </div>
+
+    <h1>You're in — welcome to<br>Grow To Infinity! 🎉</h1>
+
+    <p class="subtitle">Your £25/month plan is active and your free website build has officially begun. Here's what happens next.</p>
+
+    <div class="steps-box">
+      <h3>What happens next</h3>
+
+      <div class="next-step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h4>Check your email</h4>
+          <p>You'll receive a confirmation email with your receipt and a link to book your onboarding call.</p>
+        </div>
+      </div>
+
+      <div class="next-step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h4>Book your onboarding call</h4>
+          <p>Choose a time that suits you. We'll walk through your requirements, brand, and everything we need to build your site.</p>
+        </div>
+      </div>
+
+      <div class="next-step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h4>We build your website</h4>
+          <p>Within 7 days of your onboarding call, your fully custom website will be ready to review — with unlimited revisions until you're 100% happy.</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="email-note">Questions? Email us at <strong>teamgrowtoinfinity@gmail.com</strong> and we'll get back to you within a few hours.</p>
+
+    <a class="cta-btn" href="mailto:teamgrowtoinfinity@gmail.com">📅 Book Your Onboarding Call</a>
+
+  </div>
+
+  <div class="brand">
+    <div class="brand-eyebrow">GROW TO INFINITY</div>
+    <div class="brand-main">FREE WEBSITE</div>
+  </div>
+
+</body>
+</html>
