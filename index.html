@@ -264,6 +264,7 @@
     font-weight: 600; color: #1A1A26; background: transparent;
   }
   .form-field input::placeholder { color: #8A8A9E; font-weight: 600; }
+  .form-field + .form-field { margin-top: 12px; }
 
   .get-started {
     background: #4F5BE0; color: #fff; border: none;
@@ -271,6 +272,7 @@
     font-family: 'Plus Jakarta Sans', sans-serif; font-size: 18px; font-weight: 800;
     letter-spacing: 0.08em; cursor: pointer;
     transition: background 0.15s ease; width: 100%;
+    margin-top: 14px;
   }
   .get-started:hover { background: #3F4BD0; }
 
@@ -957,7 +959,7 @@
   .checkout-step { display: none; }
   .checkout-step.active { display: block; }
   .step-indicator {
-    display: flex; align-items: center; gap: 0; margin-bottom: 6px;
+    display: flex; align-items: center; gap: 0; margin-bottom: 6px; margin-top: 6px;
   }
   .step-dot {
     display: flex; align-items: center; justify-content: center;
@@ -2191,13 +2193,7 @@ async function submitPayment() {
     }
 
     // Success
-    document.getElementById('checkout-step-2').classList.remove('active');
-    document.getElementById('checkout-step-3').classList.add('active');
-    document.getElementById('dot2').classList.remove('active');
-    document.getElementById('dot2').classList.add('done');
-    document.getElementById('dot2').innerHTML = '✓';
-    document.getElementById('label2').classList.remove('active');
-    document.getElementById('label2').classList.add('done');
+    window.location.href = '/thank-you.html';
 
   } catch (e) {
     errEl.textContent = 'Something went wrong. Please try again.';
