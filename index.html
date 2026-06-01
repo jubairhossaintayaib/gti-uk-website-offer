@@ -4,6 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Grow To Infinity — Free Website Build</title>
+<script src="https://js.stripe.com/v3/"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -1045,23 +1046,68 @@
         Get your done-for-you website risk free, delivered in just 7 days.
       </p>
 
-      <div class="form-field">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-          <circle cx="12" cy="7" r="4"></circle>
-        </svg>
-        <input type="text" placeholder="Full Name*" />
+      <!-- Step indicator -->
+      <div class="step-indicator">
+        <div class="step-dot active" id="dot1">1</div>
+        <div class="step-line" id="line1"></div>
+        <div class="step-dot" id="dot2">2</div>
+      </div>
+      <div class="step-labels">
+        <span class="active" id="label1">Your Details</span>
+        <span id="label2">Payment</span>
       </div>
 
-      <div class="form-field">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-          <polyline points="22,6 12,13 2,6"></polyline>
-        </svg>
-        <input type="email" placeholder="Email*" />
+      <!-- Step 1: Name + Email -->
+      <div class="checkout-step active" id="checkout-step-1">
+        <div class="form-field">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+          <input type="text" id="checkout-name" placeholder="Full Name*" />
+        </div>
+        <div class="form-field">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+            <polyline points="22,6 12,13 2,6"></polyline>
+          </svg>
+          <input type="email" id="checkout-email" placeholder="Email*" />
+        </div>
+        <div id="step1-error" class="stripe-error">Please enter your name and a valid email.</div>
+        <button class="get-started" type="button" onclick="goToStep2()">GET STARTED →</button>
       </div>
 
-      <button class="get-started" type="button">GET STARTED</button>
+      <!-- Step 2: Billing + Card -->
+      <div class="checkout-step" id="checkout-step-2">
+        <button class="back-btn" onclick="goToStep1()">← Back</button>
+        <div class="checkout-summary">
+          <span class="summary-name">Custom Website Package</span>
+          <span class="summary-price">£25 / month</span>
+        </div>
+        <input type="text" class="billing-field" id="billing-name" placeholder="Cardholder Name*" />
+        <input type="text" class="billing-field" id="billing-address" placeholder="Billing Address*" />
+        <div class="billing-row">
+          <input type="text" class="billing-field" id="billing-city" placeholder="City*" />
+          <input type="text" class="billing-field" id="billing-postcode" placeholder="Postcode*" />
+        </div>
+        <div id="stripe-card-element"></div>
+        <div id="stripe-error" class="stripe-error"></div>
+        <button class="get-started" type="button" id="pay-btn" onclick="submitPayment()">
+          PAY £25 &amp; GET STARTED →
+        </button>
+        <div class="secure-badge">
+          🔒 Secured by Stripe · Cancel anytime
+        </div>
+      </div>
+
+      <!-- Step 3: Success -->
+      <div class="checkout-step" id="checkout-step-3">
+        <div class="success-box">
+          <div class="success-icon">🎉</div>
+          <h3>You're in! Welcome aboard.</h3>
+          <p>Check your email for next steps. We'll be in touch within 24 hours to book your onboarding call and get your website built.</p>
+        </div>
+      </div>
 
       <div class="payments">
         <span class="pay-pill">VISA</span>
@@ -1944,5 +1990,161 @@
   }
 </script>
 
+
+<script>
+// ── Stripe 2-Step Checkout ──
+const STRIPE_PK = 'pk_live_51KovZrQocTcyd7OUJDcFgIPMZOM7IX0k3WEXnMLIDrfe4LyZIlaZqe2Povg6BKyVdhPF6KuIenbVpirepvyPprsi00Q7NotqMI';
+const stripe = Stripe(STRIPE_PK);
+const elements = stripe.elements();
+let cardElement = null;
+let cardMounted = false;
+
+function goToStep2() {
+  const name = document.getElementById('checkout-name').value.trim();
+  const email = document.getElementById('checkout-email').value.trim();
+  const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  const err = document.getElementById('step1-error');
+
+  if (!name || !emailValid) {
+    err.style.display = 'block';
+    return;
+  }
+  err.style.display = 'none';
+
+  // Advance UI
+  document.getElementById('checkout-step-1').classList.remove('active');
+  document.getElementById('checkout-step-2').classList.add('active');
+  document.getElementById('dot1').classList.remove('active');
+  document.getElementById('dot1').classList.add('done');
+  document.getElementById('dot1').innerHTML = '✓';
+  document.getElementById('dot2').classList.add('active');
+  document.getElementById('line1').classList.add('done');
+  document.getElementById('label1').classList.remove('active');
+  document.getElementById('label1').classList.add('done');
+  document.getElementById('label2').classList.add('active');
+
+  // Mount Stripe card element once
+  if (!cardMounted) {
+    cardElement = elements.create('card', {
+      style: {
+        base: {
+          fontFamily: "'Plus Jakarta Sans', sans-serif",
+          fontSize: '15px',
+          color: '#1A1A26',
+          '::placeholder': { color: '#8A8A9E' }
+        }
+      }
+    });
+    cardElement.mount('#stripe-card-element');
+    cardMounted = true;
+  }
+}
+
+function goToStep1() {
+  document.getElementById('checkout-step-2').classList.remove('active');
+  document.getElementById('checkout-step-1').classList.add('active');
+  document.getElementById('dot1').classList.add('active');
+  document.getElementById('dot1').classList.remove('done');
+  document.getElementById('dot1').innerHTML = '1';
+  document.getElementById('dot2').classList.remove('active');
+  document.getElementById('line1').classList.remove('done');
+  document.getElementById('label1').classList.add('active');
+  document.getElementById('label1').classList.remove('done');
+  document.getElementById('label2').classList.remove('active');
+}
+
+async function submitPayment() {
+  const btn = document.getElementById('pay-btn');
+  const errEl = document.getElementById('stripe-error');
+  const billingName = document.getElementById('billing-name').value.trim();
+  const address = document.getElementById('billing-address').value.trim();
+  const city = document.getElementById('billing-city').value.trim();
+  const postcode = document.getElementById('billing-postcode').value.trim();
+
+  if (!billingName || !address || !city || !postcode) {
+    errEl.textContent = 'Please fill in all billing fields.';
+    errEl.style.display = 'block';
+    return;
+  }
+
+  btn.disabled = true;
+  btn.textContent = 'Processing…';
+  errEl.style.display = 'none';
+
+  // Create PaymentMethod
+  const { paymentMethod, error } = await stripe.createPaymentMethod({
+    type: 'card',
+    card: cardElement,
+    billing_details: {
+      name: billingName,
+      email: document.getElementById('checkout-email').value.trim(),
+      address: {
+        line1: address,
+        city: city,
+        postal_code: postcode,
+        country: 'GB'
+      }
+    }
+  });
+
+  if (error) {
+    errEl.textContent = error.message;
+    errEl.style.display = 'block';
+    btn.disabled = false;
+    btn.textContent = 'PAY £25 & GET STARTED →';
+    return;
+  }
+
+  // Send to backend
+  try {
+    const res = await fetch('/api/create-subscription', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        paymentMethodId: paymentMethod.id,
+        name: document.getElementById('checkout-name').value.trim(),
+        email: document.getElementById('checkout-email').value.trim(),
+      })
+    });
+
+    const data = await res.json();
+
+    if (data.error) {
+      errEl.textContent = data.error;
+      errEl.style.display = 'block';
+      btn.disabled = false;
+      btn.textContent = 'PAY £25 & GET STARTED →';
+      return;
+    }
+
+    // Handle 3D Secure if required
+    if (data.clientSecret) {
+      const { error: confirmError } = await stripe.confirmCardPayment(data.clientSecret);
+      if (confirmError) {
+        errEl.textContent = confirmError.message;
+        errEl.style.display = 'block';
+        btn.disabled = false;
+        btn.textContent = 'PAY £25 & GET STARTED →';
+        return;
+      }
+    }
+
+    // Success
+    document.getElementById('checkout-step-2').classList.remove('active');
+    document.getElementById('checkout-step-3').classList.add('active');
+    document.getElementById('dot2').classList.remove('active');
+    document.getElementById('dot2').classList.add('done');
+    document.getElementById('dot2').innerHTML = '✓';
+    document.getElementById('label2').classList.remove('active');
+    document.getElementById('label2').classList.add('done');
+
+  } catch (e) {
+    errEl.textContent = 'Something went wrong. Please try again.';
+    errEl.style.display = 'block';
+    btn.disabled = false;
+    btn.textContent = 'PAY £25 & GET STARTED →';
+  }
+}
+</script>
 </body>
 </html>
